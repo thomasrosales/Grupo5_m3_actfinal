@@ -4,7 +4,7 @@
 
 - Lester Elias Peltroche Muñoz
 - Marcelo Ivan Rojas Hernández
-. Tomas Joaquin Rosales
+- Tomas Joaquin Rosales
 
 ## Instrucciones
 
