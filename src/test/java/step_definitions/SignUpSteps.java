@@ -32,21 +32,18 @@ public class SignUpSteps {
 
     @Given("dado que yo quiero registrarme en el sistema")
     public void dadoQueYoQuieroRegistrarmeEnElSistema() {
-
         navigator.goToHomePage();
         clickButton.clickOnSignUpButton();
     }
 
     @When("ingreso usuario y contraseña")
     public void ingresoUsuarioYContraseña() {
-
         fillForm.fillSignUpForm(UUID.randomUUID().toString(), "user-password");
         clickButton.clickOnConfirmSignUp();
     }
 
     @Then("debería ver el mensaje {string}")
     public void deberíaVerElMensajeSignUpSuccessful(String mensaje) {
-
         assertThat( alertAction.getAlertText() ).isEqualToIgnoringCase(mensaje);
     }
 }

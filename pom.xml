@@ -21,7 +21,8 @@
         <maven.failsafe.version>3.0.0-M5</maven.failsafe.version>
         <webdrivermanager.version>5.0.3</webdrivermanager.version>
         <serenity.core.version>3.1.10</serenity.core.version>
-        <cucumber.version>7.0.0</cucumber.version>
+        <serenity.cucumber.version>3.1.0</serenity.cucumber.version>
+        <cucumber.version>7.1.0</cucumber.version>
         <cucumber.juint.version>7.1.0</cucumber.juint.version>
     </properties>
 
@@ -55,8 +56,8 @@
                 <version>${maven.failsafe.version}</version>
                 <configuration>
                     <includes>
-                        <include>**.java</include>
-                        <include>starter/**.java</include>
+                        <include>starter/*TestsCase.java</include>
+                        <include>**java</include>
                     </includes>
                 </configuration>
                 <executions>
@@ -102,14 +103,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/net.serenity-bdd/serenity-core -->
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-core</artifactId>
-            <version>${serenity.core.version}</version>
-        </dependency>
-
-
         <!-- https://mvnrepository.com/artifact/net.serenity-bdd/serenity-junit -->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
@@ -117,39 +110,18 @@
             <version>${serenity.core.version}</version>
         </dependency>
 
-        <!--https://cucumber.io/docs/installation/java/-->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.juint.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-screenplay</artifactId>
-            <version>3.1.10</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.cucumber</groupId>
-                    <artifactId>cucumber-core</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>serenity-core</artifactId>
+            <version>${serenity.core.version}</version>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/net.serenity-bdd/serenity-cucumber -->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber</artifactId>
-            <version>3.1.10</version>
+            <version>${serenity.cucumber.version}</version>
         </dependency>
 
     </dependencies>
