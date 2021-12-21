@@ -56,6 +56,7 @@
                 <configuration>
                     <includes>
                         <include>**.java</include>
+                        <include>starter/**.java</include>
                     </includes>
                 </configuration>
                 <executions>
