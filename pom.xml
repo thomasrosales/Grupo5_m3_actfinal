@@ -21,7 +21,7 @@
         <maven.failsafe.version>3.0.0-M5</maven.failsafe.version>
         <webdrivermanager.version>5.0.3</webdrivermanager.version>
         <serenity.core.version>3.1.10</serenity.core.version>
-        <serenity.cucumber.version>3.1.0</serenity.cucumber.version>
+        <serenity.cucumber.version>3.1.10</serenity.cucumber.version>
         <cucumber.version>7.1.0</cucumber.version>
         <cucumber.juint.version>7.1.0</cucumber.juint.version>
     </properties>
