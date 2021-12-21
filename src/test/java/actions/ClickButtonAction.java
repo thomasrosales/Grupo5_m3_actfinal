@@ -1,9 +1,10 @@
 package actions;
 
 import net.serenitybdd.core.steps.UIInteractionSteps;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 
 import static page_objects.HomePage.SIGN_UP_BUTTON_ID;
-//import static page_objects.HomePage.SIGN_UP_CONFIRM_BUTTON;
+import static page_objects.HomePage.SIGN_UP_CONFIRM_BUTTON;
 
 public class ClickButtonAction extends UIInteractionSteps {
 
@@ -14,6 +15,6 @@ public class ClickButtonAction extends UIInteractionSteps {
 
     public void clickOnConfirmSignUp() {
 
-        //$(SIGN_UP_CONFIRM_BUTTON).click();
+        $(SIGN_UP_CONFIRM_BUTTON).click();
     }
 }

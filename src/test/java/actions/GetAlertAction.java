@@ -9,6 +9,9 @@ public class GetAlertAction extends UIInteractionSteps {
 
         waitFor(ExpectedConditions.alertIsPresent());
 
-        return getAlertText();
+        String text = getAlert().getText();
+        getAlert().accept();
+
+        return text;
     }
 }

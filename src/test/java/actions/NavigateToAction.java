@@ -10,7 +10,7 @@ public class NavigateToAction extends UIInteractionSteps {
 
     public void goToHomePage() {
 
-        this.homePage.open();
+        homePage.open();
     }
 
     public void goToSignUp() {
