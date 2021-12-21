@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.java.version>4.1.0</selenium.java.version>
         <juint.version>4.13.2</juint.version>
@@ -56,6 +56,7 @@
                 <configuration>
                     <includes>
                         <include>**.java</include>
+                        <include>starter/**.java</include>
                     </includes>
                 </configuration>
                 <executions>
@@ -130,6 +131,25 @@
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.juint.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-screenplay</artifactId>
+            <version>3.1.10</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.cucumber</groupId>
+                    <artifactId>cucumber-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-cucumber</artifactId>
+            <version>3.1.10</version>
         </dependency>
 
     </dependencies>
