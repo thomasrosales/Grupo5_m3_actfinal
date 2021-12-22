@@ -4,12 +4,17 @@ import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import page_objects.CartPage;
 import page_objects.HomePage;
 
 public class GetListElementsAction extends UIInteractionSteps {
 
     @Steps
     private HomePage homePage;
+
+    @Steps
+    private CartPage cartPage;
 
     @Step("get list of phones elements")
     public int getCountPhonesListElements() {
@@ -50,5 +55,10 @@ public class GetListElementsAction extends UIInteractionSteps {
             }
         }
         return false;
+    }
+
+    public int getAmountOfElementsInCart() {
+        waitFor(ExpectedConditions.jsReturnsValue("return jQuery.active == 0"));
+        return cartPage.getProductsCart().size();
     }
 }

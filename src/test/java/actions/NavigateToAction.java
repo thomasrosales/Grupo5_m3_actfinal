@@ -12,14 +12,6 @@ public class NavigateToAction {
 
     @Step
     public void goToHomePage() {
-
         homePage.open();
     }
-
-    @Step
-    public void goToSignUp() {
-
-
-    }
-
 }
