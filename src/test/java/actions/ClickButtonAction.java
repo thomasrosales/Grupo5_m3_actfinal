@@ -1,22 +1,29 @@
 package actions;
 
-import net.serenitybdd.core.pages.WithLocator;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 
 import net.thucydides.core.annotations.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import net.thucydides.core.annotations.Steps;
+import page_objects.HomePage;
 
-import java.time.Duration;
 
 import static page_objects.HomePage.*;
+import static page_objects.ProductPage.ADD_PRODUCT_BUTTON;
 
 public class ClickButtonAction extends UIInteractionSteps {
+
+    @Steps
+    private HomePage homePage;
 
     @Step
     public void clickOnSignUpButton() {
         $(SIGN_UP_BUTTON_ID).click();
+    }
+
+    @Step
+    public void clickOnCartMenu() {
+        homePage.getCartMenuButton().click();
     }
 
     @Step
@@ -37,5 +44,31 @@ public class ClickButtonAction extends UIInteractionSteps {
     @Step("click on monitors tab")
     public void clickOnMonitorsTab() {
         TABS_A_HREF.get(2).click();
+    }
+
+    public void clickOnItem(String item, String type) {
+        switch(type) {
+            case "phone":
+                clickOnPhonesTab();
+                break;
+            case "monitor":
+                clickOnMonitorsTab();
+                break;
+            case "laptop":
+                clickOnLaptopsTab();
+                break;
+            default:
+                return;
+        }
+        for (WebElementFacade elementItem : homePage.getElementItems()) {
+            if (elementItem.getText().toString().equalsIgnoreCase(item)){
+                elementItem.click();
+                break;
+            }
+        }
+    }
+
+    public void addProductToCartShop() {
+        $(ADD_PRODUCT_BUTTON).waitUntilClickable().waitUntilPresent().click();
     }
 }

@@ -16,4 +16,12 @@ public class GetAlertAction extends UIInteractionSteps {
 
         return text;
     }
+
+    @Step
+    public void acceptAlertText() {
+        waitFor(ExpectedConditions.alertIsPresent());
+        getAlert().accept();
+    }
+
+
 }

@@ -4,20 +4,27 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 
 import java.util.List;
 
-import static java.time.temporal.ChronoUnit.SECONDS;
 
 @DefaultUrl("https://www.demoblaze.com/index.html")
 public class HomePage extends PageObject {
+
+    // Navigation
+
+    @FindBy(how = How.XPATH, using = "//*[@id='navbarExample']/ul/li[4]/a")
+    WebElementFacade CART_MENU_BUTTON;
+
+    public WebElementFacade getCartMenuButton(){
+        return CART_MENU_BUTTON;
+    }
+
+    // Buttons
 
     public static final String SIGN_UP_BUTTON_ID = "#signin2";
     public static final String SIGN_UP_USER_NAME_TEXT = "#sign-username";
