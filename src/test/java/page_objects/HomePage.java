@@ -33,11 +33,11 @@ public class HomePage extends PageObject {
     // Buttons
     public static final String SIGN_UP_BUTTON_ID = "#signin2";
     public static final String LOGIN_BUTTON_ID = "#login2";
-    public static final String NAME_OF_USER_TEXT_ID = "#nameofuser";
     public static final String SIGN_UP_USER_NAME_TEXT = "#sign-username";
-    public static final String LOGIN_USER_NAME_TEXT = "#loginusername";
     public static final String SIGN_UP_USER_PASSWORD_TEXT = "#sign-password";
     public static final String LOGIN_USER_PASSWORD_TEXT = "#loginpassword";
+    public static final String LOGIN_USER_NAME_TEXT = "#loginusername";
+    public static final By LOGGED_USER_NAME = By.id("nameofuser");
     public static final By SIGN_UP_CONFIRM_BUTTON = By.xpath("//html/body/div[2]/div/div/div[3]/button[2]");
     public static final By LOGIN_CONFIRM_BUTTON = By.xpath("//html/body/div[3]/div/div/div[3]/button[2]");
 

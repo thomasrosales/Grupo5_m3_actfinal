@@ -2,6 +2,7 @@ package step_definitions;
 
 import actions.ClickButtonAction;
 import actions.FillFormAction;
+import actions.GetLoggedInDataAction;
 import actions.NavigateToAction;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,6 +13,7 @@ import page_objects.HomePage;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
 
 public class LoginSteps {
 
@@ -23,6 +25,8 @@ public class LoginSteps {
     private ClickButtonAction clickButton;
     @Steps
     private FillFormAction fillForm;
+    @Steps
+    private GetLoggedInDataAction getLoggedInDataAction;
 
 
     @Given("dado que yo quiero entrar al sistema")
@@ -36,13 +40,22 @@ public class LoginSteps {
     public void ingresarCredenciales() {
 
         fillForm.fillLoginForm(homePage.KNOWN_USER_NAME, homePage.KNOWN_USER_PASSWORD);
-        clickButton.clickOnLoginButton();
+        clickButton.clickOnConfirmLogin();
     }
 
     @Then("debería ver la página principal")
     public void verPaginaPrincipal() {
 
-        assertThat( homePage ).isNotNull();
+        String loggedUser = getLoggedInDataAction.getUserLoggedName();
+System.out.println("*********************************");
+System.out.println("*********************************");
+System.out.println("*********************************");
+        System.out.println(loggedUser);
+System.out.println("*********************************");
+System.out.println("*********************************");
+System.out.println("*********************************");
+        assertNotNull( loggedUser );
+        assertTrue( loggedUser.contains(homePage.KNOWN_USER_NAME) );
     }
 
 }

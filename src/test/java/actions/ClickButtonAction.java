@@ -1,5 +1,6 @@
 package actions;
 
+import net.serenitybdd.core.pages.ClickStrategy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 
@@ -25,7 +26,7 @@ public class ClickButtonAction extends UIInteractionSteps {
 
     @Step
     public void clickOnLoginButton() {
-        $(LOGIN_BUTTON_ID).click();
+        $(LOGIN_BUTTON_ID).click(ClickStrategy.WAIT_UNTIL_ENABLED);
     }
 
     @Step
@@ -40,8 +41,8 @@ public class ClickButtonAction extends UIInteractionSteps {
 
     @Step
     public void clickOnConfirmLogin() {
-        waitFor(ExpectedConditions.presenceOfElementLocated(LOGIN_CONFIRM_BUTTON)).click();
-        //$(LOGIN_CONFIRM_BUTTON).click();
+        //waitFor(ExpectedConditions.presenceOfElementLocated(LOGIN_CONFIRM_BUTTON)).click();
+        $(LOGIN_CONFIRM_BUTTON).click(ClickStrategy.WAIT_UNTIL_ENABLED);
     }
 
     @Step("click on phones tab")
