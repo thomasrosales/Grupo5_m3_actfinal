@@ -5,6 +5,8 @@ import net.serenitybdd.core.steps.UIInteractionSteps;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import page_objects.HomePage;
 
 
@@ -22,6 +24,11 @@ public class ClickButtonAction extends UIInteractionSteps {
     }
 
     @Step
+    public void clickOnLoginButton() {
+        $(LOGIN_BUTTON_ID).click();
+    }
+
+    @Step
     public void clickOnCartMenu() {
         homePage.getCartMenuButton().click();
     }
@@ -29,6 +36,12 @@ public class ClickButtonAction extends UIInteractionSteps {
     @Step
     public void clickOnConfirmSignUp() {
         $(SIGN_UP_CONFIRM_BUTTON).click();
+    }
+
+    @Step
+    public void clickOnConfirmLogin() {
+        waitFor(ExpectedConditions.presenceOfElementLocated(LOGIN_CONFIRM_BUTTON)).click();
+        //$(LOGIN_CONFIRM_BUTTON).click();
     }
 
     @Step("click on phones tab")

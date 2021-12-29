@@ -4,6 +4,7 @@ import actions.ClickButtonAction;
 import actions.FillFormAction;
 import actions.GetAlertAction;
 import actions.NavigateToAction;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -30,6 +31,7 @@ public class SignUpSteps {
     private GetAlertAction alertAction;
 
 
+    @Before(value="@login")
     @Given("dado que yo quiero registrarme en el sistema")
     public void dadoQueYoQuieroRegistrarmeEnElSistema() {
         navigator.goToHomePage();
@@ -38,7 +40,8 @@ public class SignUpSteps {
 
     @When("ingreso usuario y contraseña")
     public void ingresoUsuarioYContraseña() {
-        fillForm.fillSignUpForm(UUID.randomUUID().toString(), "user-password");
+
+        fillForm.fillSignUpForm(homePage.USER_NAME, "user-password");
         clickButton.clickOnConfirmSignUp();
     }
 
