@@ -5,6 +5,8 @@ import net.serenitybdd.core.steps.UIInteractionSteps;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
+import org.openqa.selenium.By;
+import page_objects.CartPage;
 import page_objects.HomePage;
 
 
@@ -15,6 +17,9 @@ public class ClickButtonAction extends UIInteractionSteps {
 
     @Steps
     private HomePage homePage;
+
+    @Steps
+    private CartPage cartPage;
 
     @Step
     public void clickOnSignUpButton() {
@@ -70,5 +75,16 @@ public class ClickButtonAction extends UIInteractionSteps {
 
     public void addProductToCartShop() {
         $(ADD_PRODUCT_BUTTON).waitUntilClickable().waitUntilPresent().click();
+    }
+
+    public void deleteProduct(String arg0) {
+        for (WebElementFacade webElementFacade : cartPage.getProductsCart()) {
+            if (webElementFacade.findElements(By.tagName("td")).get(1).getText().toString().equalsIgnoreCase(arg0)){
+                webElementFacade.findElements(By.tagName("td")).get(3).findElement(By.tagName("a")).click();
+                break;
+            }
+
+        }
+
     }
 }
