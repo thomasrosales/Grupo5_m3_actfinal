@@ -47,4 +47,11 @@ public class CartShopSteps {
         clickButton.clickOnCartMenu();
         assertThat(getListElementsAction.getAmountOfElementsInCart()).isEqualTo(amountOfItems);
     }
+
+    @And("elimino el item {string}")
+    public void eliminoElItemSamsungGalaxyS(String arg0) {
+        clickButton.clickOnCartMenu();
+        clickButton.deleteProduct(arg0);
+
+    }
 }

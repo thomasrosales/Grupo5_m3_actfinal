@@ -12,3 +12,13 @@ Feature: Car Shoop
     | Samsung galaxy s6 | phone  |
     | Sony vaio i7      | laptop |
     Then deberia observar la lista de 3 items agregados
+
+  Scenario: Eliminar item al carrito de compras
+
+    Given que soy parte del sistema
+    When agrego los items
+      | Samsung galaxy s7 | phone  |
+      | Samsung galaxy s6 | phone  |
+      | Sony vaio i7      | laptop |
+    And elimino el item 'Samsung galaxy s6'
+    Then deberia observar la lista de 2 items agregados
