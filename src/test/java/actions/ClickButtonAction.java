@@ -1,8 +1,8 @@
 package actions;
 
+import net.serenitybdd.core.pages.ClickStrategy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.steps.UIInteractionSteps;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.openqa.selenium.By;
@@ -29,6 +29,11 @@ public class ClickButtonAction extends UIInteractionSteps {
     }
 
     @Step
+    public void clickOnLoginButton() {
+        $(LOGIN_BUTTON_ID).click(ClickStrategy.WAIT_UNTIL_ENABLED);
+    }
+
+    @Step
     public void clickOnCartMenu() {
         homePage.getCartMenuButton().click();
     }
@@ -36,6 +41,12 @@ public class ClickButtonAction extends UIInteractionSteps {
     @Step
     public void clickOnConfirmSignUp() {
         $(SIGN_UP_CONFIRM_BUTTON).click();
+    }
+
+    @Step
+    public void clickOnConfirmLogin() {
+        //waitFor(ExpectedConditions.presenceOfElementLocated(LOGIN_CONFIRM_BUTTON)).click();
+        $(LOGIN_CONFIRM_BUTTON).click(ClickStrategy.WAIT_UNTIL_ENABLED);
     }
 
     @Step("click on phones tab")
@@ -54,7 +65,7 @@ public class ClickButtonAction extends UIInteractionSteps {
     }
 
     public void clickOnItem(String item, String type) {
-        switch(type) {
+        switch (type) {
             case "phone":
                 clickOnPhonesTab();
                 break;
@@ -68,7 +79,7 @@ public class ClickButtonAction extends UIInteractionSteps {
                 return;
         }
         for (WebElementFacade elementItem : homePage.getElementItems()) {
-            if (elementItem.getText().toString().equalsIgnoreCase(item)){
+            if (elementItem.getText().equalsIgnoreCase(item)) {
                 elementItem.click();
                 break;
             }
@@ -81,7 +92,7 @@ public class ClickButtonAction extends UIInteractionSteps {
 
     public void deleteProduct(String arg0) {
         for (WebElementFacade webElementFacade : cartPage.getProductsCart()) {
-            if (webElementFacade.findElements(By.tagName("td")).get(1).getText().toString().equalsIgnoreCase(arg0)){
+            if (webElementFacade.findElements(By.tagName("td")).get(1).getText().equalsIgnoreCase(arg0)) {
                 webElementFacade.findElements(By.tagName("td")).get(3).findElement(By.tagName("a")).click();
                 break;
             }
