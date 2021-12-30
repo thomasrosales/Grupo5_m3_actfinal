@@ -39,7 +39,7 @@ public class LoginSteps {
     @When("ingreso mis credenciales")
     public void ingresarCredenciales() {
 
-        fillForm.fillLoginForm(homePage.KNOWN_USER_NAME, homePage.KNOWN_USER_PASSWORD);
+        fillForm.fillLoginForm(getLoggedInDataAction.getUserName(), getLoggedInDataAction.getUserPassword());
         clickButton.clickOnConfirmLogin();
     }
 
@@ -47,15 +47,8 @@ public class LoginSteps {
     public void verPaginaPrincipal() {
 
         String loggedUser = getLoggedInDataAction.getUserLoggedName();
-System.out.println("*********************************");
-System.out.println("*********************************");
-System.out.println("*********************************");
-        System.out.println(loggedUser);
-System.out.println("*********************************");
-System.out.println("*********************************");
-System.out.println("*********************************");
         assertNotNull( loggedUser );
-        assertTrue( loggedUser.contains(homePage.KNOWN_USER_NAME) );
+        assertTrue( loggedUser.contains( getLoggedInDataAction.getUserName() ) );
     }
 
 }

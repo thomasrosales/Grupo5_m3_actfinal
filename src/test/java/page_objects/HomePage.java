@@ -21,8 +21,18 @@ public class HomePage extends PageObject {
     @FindBy(how = How.XPATH, using = "//*[@id='navbarExample']/ul/li[4]/a")
     WebElementFacade CART_MENU_BUTTON;
 
+    @FindBy(how = How.ID, using = "nameofuser")
+    WebElementFacade nameOfUser;
+
+
     public WebElementFacade getCartMenuButton(){
         return CART_MENU_BUTTON;
+    }
+
+    public WebElementFacade getNameOfUser() {
+        waitFor(ExpectedConditions.jsReturnsValue("return jQuery.active == 0"));
+        waitFor(ExpectedConditions.presenceOfElementLocated(By.id("nameofuser")));
+        return this.nameOfUser;
     }
 
     // Login data
@@ -37,7 +47,6 @@ public class HomePage extends PageObject {
     public static final String SIGN_UP_USER_PASSWORD_TEXT = "#sign-password";
     public static final String LOGIN_USER_PASSWORD_TEXT = "#loginpassword";
     public static final String LOGIN_USER_NAME_TEXT = "#loginusername";
-    public static final By LOGGED_USER_NAME = By.id("nameofuser");
     public static final By SIGN_UP_CONFIRM_BUTTON = By.xpath("//html/body/div[2]/div/div/div[3]/button[2]");
     public static final By LOGIN_CONFIRM_BUTTON = By.xpath("//html/body/div[3]/div/div/div[3]/button[2]");
 
