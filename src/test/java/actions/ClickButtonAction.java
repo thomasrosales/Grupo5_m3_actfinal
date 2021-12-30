@@ -9,6 +9,9 @@ import org.openqa.selenium.By;
 import page_objects.CartPage;
 import page_objects.HomePage;
 
+
+import static page_objects.CartPage.PLACE_ORDER_BUTTON;
+import static page_objects.CartPage.PURCHASE_BUTTON;
 import static page_objects.HomePage.*;
 import static page_objects.ProductPage.ADD_PRODUCT_BUTTON;
 
@@ -96,5 +99,13 @@ public class ClickButtonAction extends UIInteractionSteps {
 
         }
 
+    }
+
+    public void clickOnPlaceOrder() {
+        $(PLACE_ORDER_BUTTON).click();
+    }
+
+    public void clickOnPurchase() {
+        $(PURCHASE_BUTTON).click();
     }
 }
