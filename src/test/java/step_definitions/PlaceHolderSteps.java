@@ -1,9 +1,7 @@
 package step_definitions;
 
-import actions.ClickButtonAction;
-import actions.FillFormAction;
-import actions.GetAlertAction;
-import actions.NavigateToAction;
+import actions.*;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -24,6 +22,9 @@ public class PlaceHolderSteps {
 
     @Steps
     private GetAlertAction getAlertAction;
+
+    @Steps
+    private GetListElementsAction getListElementsAction;
 
     @Before
     public void prepareTests(){

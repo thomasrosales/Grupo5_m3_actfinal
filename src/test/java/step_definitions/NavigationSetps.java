@@ -1,8 +1,6 @@
 package step_definitions;
 
-import actions.ClickButtonAction;
-import actions.GetListElementsAction;
-import actions.NavigateToAction;
+import actions.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,8 +19,6 @@ public class NavigationSetps {
     @Steps
     private GetListElementsAction getListElementsAction;
 
-    @Given("que soy parte del sistema")
-    public void queSoyParteDelSistema() {}
 
     @When("hago click en telefonos")
     public void hagoClickEnTelefonos() {

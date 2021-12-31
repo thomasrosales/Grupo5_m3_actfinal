@@ -1,9 +1,6 @@
 package step_definitions;
 
-import actions.ClickButtonAction;
-import actions.FillFormAction;
-import actions.GetLoggedInDataAction;
-import actions.NavigateToAction;
+import actions.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,6 +24,8 @@ public class LoginSteps {
     private FillFormAction fillForm;
     @Steps
     private GetLoggedInDataAction getLoggedInDataAction;
+    @Steps
+    private GetListElementsAction getListElementsAction;
 
 
     @Given("dado que yo quiero entrar al sistema")
@@ -49,6 +48,16 @@ public class LoginSteps {
         String loggedUser = getLoggedInDataAction.getUserLoggedName();
         assertNotNull( loggedUser );
         assertTrue( loggedUser.contains( getLoggedInDataAction.getUserName() ) );
+    }
+
+
+    @Given("que soy parte del sistema")
+    public void queSoyParteDelSistema() {
+        navigator.goToHomePage();
+        clickButton.clickOnLoginButton();
+        fillForm.fillLoginForm(getLoggedInDataAction.getUserName(), getLoggedInDataAction.getUserPassword());
+        clickButton.clickOnConfirmLogin();
+        assertThat(getLoggedInDataAction.getUserLoggedName()).isNotNull();
     }
 
 }

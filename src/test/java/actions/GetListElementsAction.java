@@ -1,12 +1,16 @@
 package actions;
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import page_objects.CartPage;
 import page_objects.HomePage;
+
+import java.util.List;
 
 public class GetListElementsAction extends UIInteractionSteps {
 
@@ -24,7 +28,7 @@ public class GetListElementsAction extends UIInteractionSteps {
     @Step("get an specific phone of phones elements")
     public boolean isPhonePresent(String phone) {
         for (WebElement phonesItem : homePage.getElementItems()) {
-            if (phonesItem.getText().toString().equalsIgnoreCase(phone)){
+            if (phonesItem.getText().equalsIgnoreCase(phone)){
                 return true;
             }
         }
@@ -37,7 +41,7 @@ public class GetListElementsAction extends UIInteractionSteps {
 
     public boolean isLaptopPresent(String laptop) {
         for (WebElement laptopItem : homePage.getElementItems()) {
-            if (laptopItem.getText().toString().equalsIgnoreCase(laptop)){
+            if (laptopItem.getText().equalsIgnoreCase(laptop)){
                 return true;
             }
         }
@@ -50,15 +54,30 @@ public class GetListElementsAction extends UIInteractionSteps {
 
     public boolean isMonitorPresent(String monitor) {
         for (WebElement monitorItem : homePage.getElementItems()) {
-            if (monitorItem.getText().toString().equalsIgnoreCase(monitor)){
+            if (monitorItem.getText().equalsIgnoreCase(monitor)){
                 return true;
             }
         }
         return false;
     }
 
-    public int getAmountOfElementsInCart() {
+    public List<WebElementFacade> getAmountOfElementsInCart() {
         waitFor(ExpectedConditions.jsReturnsValue("return jQuery.active == 0"));
-        return cartPage.getProductsCart().size();
+        waitFor(2);
+        return cartPage.getProductsCart();
+    }
+
+    public void removeElementsInCart(){
+        while(true){
+            try {
+                if(getAmountOfElementsInCart().size() != 0){
+                    getAmountOfElementsInCart().get(0).findElements(By.tagName("td")).get(3).findElement(By.tagName("a")).click();
+                } else {
+                    break;
+                }
+            }
+            catch(Exception ignored) {}
+
+        }
     }
 }
