@@ -63,7 +63,7 @@ public class GetListElementsAction extends UIInteractionSteps {
 
     public List<WebElementFacade> getAmountOfElementsInCart() {
         waitFor(ExpectedConditions.jsReturnsValue("return jQuery.active == 0"));
-        waitFor(1);
+        waitFor(2);
         return cartPage.getProductsCart();
     }
 
