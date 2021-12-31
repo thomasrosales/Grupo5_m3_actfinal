@@ -4,7 +4,7 @@ import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 import page_objects.HomePage;
 
-public class NavigateToAction {
+public class NavigateToAction extends UIInteractionSteps {
 
 
     private HomePage homePage;
@@ -13,5 +13,11 @@ public class NavigateToAction {
     @Step
     public void goToHomePage() {
         homePage.open();
+    }
+
+    @Step
+    public void waitAWhile() {
+
+        waitFor(2);
     }
 }

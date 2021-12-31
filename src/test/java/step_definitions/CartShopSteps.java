@@ -1,9 +1,6 @@
 package step_definitions;
 
-import actions.ClickButtonAction;
-import actions.GetAlertAction;
-import actions.GetListElementsAction;
-import actions.NavigateToAction;
+import actions.*;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -30,10 +27,22 @@ public class CartShopSteps {
     @Steps
     private GetListElementsAction getListElementsAction;
 
+    @Steps
+    private FillFormAction fillForm;
+
+    @Steps
+    private GetLoggedInDataAction getLoggedInDataAction;
+
 
     @When("agrego los items")
     public void agregoLosItems(DataTable table) {
+
         navigator.goToHomePage();
+        clickButton.clickOnLoginButton();
+        fillForm.fillLoginForm(getLoggedInDataAction.getUserName(), getLoggedInDataAction.getUserPassword());
+        clickButton.clickOnConfirmLogin();
+        navigator.waitAWhile();
+
         for (List<String> datum : table.asLists()) {
             clickButton.clickOnItem(datum.get(0), datum.get(1));
             clickButton.addProductToCartShop();
