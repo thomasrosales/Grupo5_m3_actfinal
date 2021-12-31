@@ -28,7 +28,7 @@ public class GetListElementsAction extends UIInteractionSteps {
     @Step("get an specific phone of phones elements")
     public boolean isPhonePresent(String phone) {
         for (WebElement phonesItem : homePage.getElementItems()) {
-            if (phonesItem.getText().toString().equalsIgnoreCase(phone)){
+            if (phonesItem.getText().equalsIgnoreCase(phone)){
                 return true;
             }
         }
@@ -41,7 +41,7 @@ public class GetListElementsAction extends UIInteractionSteps {
 
     public boolean isLaptopPresent(String laptop) {
         for (WebElement laptopItem : homePage.getElementItems()) {
-            if (laptopItem.getText().toString().equalsIgnoreCase(laptop)){
+            if (laptopItem.getText().equalsIgnoreCase(laptop)){
                 return true;
             }
         }
@@ -54,7 +54,7 @@ public class GetListElementsAction extends UIInteractionSteps {
 
     public boolean isMonitorPresent(String monitor) {
         for (WebElement monitorItem : homePage.getElementItems()) {
-            if (monitorItem.getText().toString().equalsIgnoreCase(monitor)){
+            if (monitorItem.getText().equalsIgnoreCase(monitor)){
                 return true;
             }
         }
@@ -63,7 +63,7 @@ public class GetListElementsAction extends UIInteractionSteps {
 
     public List<WebElementFacade> getAmountOfElementsInCart() {
         waitFor(ExpectedConditions.jsReturnsValue("return jQuery.active == 0"));
-        waitFor(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("success")));
+        waitFor(1);
         return cartPage.getProductsCart();
     }
 
@@ -76,9 +76,8 @@ public class GetListElementsAction extends UIInteractionSteps {
                     break;
                 }
             }
-            catch(Exception e) {
-                continue;
-            }
+            catch(Exception ignored) {}
+
         }
     }
 }
