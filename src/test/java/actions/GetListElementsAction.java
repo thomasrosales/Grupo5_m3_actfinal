@@ -1,12 +1,16 @@
 package actions;
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import page_objects.CartPage;
 import page_objects.HomePage;
+
+import java.util.List;
 
 public class GetListElementsAction extends UIInteractionSteps {
 
@@ -57,8 +61,23 @@ public class GetListElementsAction extends UIInteractionSteps {
         return false;
     }
 
-    public int getAmountOfElementsInCart() {
+    public List<WebElementFacade> getAmountOfElementsInCart() {
         waitFor(ExpectedConditions.jsReturnsValue("return jQuery.active == 0"));
-        return cartPage.getProductsCart().size();
+        return cartPage.getProductsCart();
+    }
+
+    public void removeElementsInCart(){
+        while(true){
+            try {
+                if(getAmountOfElementsInCart().size() != 0){
+                    getAmountOfElementsInCart().get(0).findElements(By.tagName("td")).get(3).findElement(By.tagName("a")).click();
+                } else {
+                    break;
+                }
+            }
+            catch(Exception e) {
+                continue;
+            }
+        }
     }
 }

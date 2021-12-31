@@ -6,6 +6,7 @@ import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import page_objects.CartPage;
 import page_objects.HomePage;
 
@@ -45,7 +46,6 @@ public class ClickButtonAction extends UIInteractionSteps {
 
     @Step
     public void clickOnConfirmLogin() {
-        //waitFor(ExpectedConditions.presenceOfElementLocated(LOGIN_CONFIRM_BUTTON)).click();
         $(LOGIN_CONFIRM_BUTTON).click(ClickStrategy.WAIT_UNTIL_ENABLED);
     }
 

@@ -14,10 +14,4 @@ public class NavigateToAction extends UIInteractionSteps {
     public void goToHomePage() {
         homePage.open();
     }
-
-    @Step
-    public void waitAWhile() {
-
-        waitFor(2);
-    }
 }
